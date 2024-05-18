@@ -5,12 +5,12 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enzo Herrera</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 
@@ -24,15 +24,15 @@
             <nav>
                 <p class="title">Portfolio</p>
                 <ul id="sideMenu">
-                    <li> <a href="#header">Home</a> </li>
-                    <li> <a href="#about">About</a> </li>
-                    <li> <a href="#portfolio">Portfolio</a> </li>
-                    <li> <a href="#contact">Contact</a> </li>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <i class="fas fa-times" onclick="closeMenu()"></i>
                 </ul>
                 <i class="fas fa-bars" onclick="openMenu()"></i>
             </nav>
-            
+
             <article class="header-text">
                 <p>Game Programmer</p>
                 <h1>Hi, I'm<br><span>Enzo</span> Herrera</h1>
@@ -44,7 +44,7 @@
         </div>
     </header>
 
-    <!-- About Section -->
+     <!-- About Section -->
     <section id="about">
         <div class="container">
             <article class="row">
@@ -57,12 +57,12 @@
                         I have a deep passion for turning my vision into reality with coding, especially in creating combat systems, 
                         which I am particularly passionate about. Currently, 
                         I am pursuing a Game Design Bachelor's Degree in France at ICAN Lyon.</p>
-
                     <article class="tab-titles">
                         <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
                         <p class="tab-links" onclick="opentab('experience')">Experience</p>
                         <p class="tab-links" onclick="opentab('education')">Education</p>
                     </article>
+
                     <article class="tab-contents active-tab" id="skills">
                         <ul>
                             <li><span>Game Development</span><br>Gameplay Programming/Online Programming/Tool Programming/UI Programming/GAS</li>
@@ -98,7 +98,7 @@
                     <article class="portfolio-layer">
                         <h3>Echoes</h3>
                         <p>Made with Unreal Engine 5 (C++/Blueprint)</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
                     </article>
                 </article>
                 <article class="project">
@@ -106,7 +106,7 @@
                     <article class="portfolio-layer">
                         <h3>Evanescent</h3>
                         <p>Made with Unreal Engine 5 (Blueprint)</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
                     </article>
                 </article>
                 <article class="project">
@@ -114,7 +114,7 @@
                     <article class="portfolio-layer">
                         <h3>Crimson Abyss</h3>
                         <p>Made with Unreal Engine 5 (C++/Blueprint)</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
                     </article>
                 </article>
                 <article class="project">
@@ -122,7 +122,7 @@
                     <article class="portfolio-layer">
                         <h3>Rusher</h3>
                         <p>Made with Unity (C#)</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
                     </article>
                 </article>
                 <article class="project">
@@ -130,7 +130,7 @@
                     <article class="portfolio-layer">
                         <h3>Project 05</h3>
                         <p>Made in Unreal Engine 5 with Blueprints</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
                     </article>
                 </article>
                 <article class="project">
@@ -138,7 +138,7 @@
                     <article class="portfolio-layer">
                         <h3>Project 06</h3>
                         <p>Made in Unreal Engine 5 with Blueprints</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
                     </article>
                 </article>
             </article>
@@ -152,7 +152,7 @@
         <div class="container">
             <form id="contact-form" method="post" action="" name="submit-to-google-sheet">
                 <article class="input-box">
-                    <input type="text" name="Name" placeholder="Full Name" autocomplete="off" required>
+                    <input type="text" name="Name" placeholder="Full Name" autocomplete="off" required pattern="[A-Za-z\s]+" title="Please enter a valid name">
                     <input type="email" name="Email" placeholder="Email Address" autocomplete="off" required>
                 </article>
                 <article class="input-box">
@@ -163,42 +163,46 @@
                 <button type="submit" class="button sendMessage">Send Message</button>
             </form>
             <span id="message"></span>
+            <article class="social-links">
+                <a href="https://www.linkedin.com/in/enzo-herrera-gp/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/enzohrrr" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </article>
         </div>
     </section>
 
-    <!-- Javascript Functions-->
+    <!-- Functions-->
     <script>
-
         var sideMenu = document.getElementById("sideMenu");
 
-        function openMenu(){
+        function openMenu() {
             sideMenu.style.right = "0";
         }
 
-        function closeMenu(){
+        function closeMenu() {
             sideMenu.style.right = "-200px";
         }
-
     </script>
 
     <script>
-
         var tablinks = document.getElementsByClassName("tab-links");
         var tabcontents = document.getElementsByClassName("tab-contents");
 
-        function opentab(tabname){
-            for(tablink of tablinks){
-                tablink.classList.remove("active-link")
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
             }
 
-            for(tabcontent of tabcontents){
-                tabcontent.classList.remove("active-tab")
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
             }
 
             event.currentTarget.classList.add("active-link");
             document.getElementById(tabname).classList.add("active-tab");
         }
-
     </script>
 
     <script>
@@ -210,7 +214,6 @@
             form.addEventListener('submit', e => {
                 e.preventDefault();
 
-                // Convert form data to strings
                 const formData = new FormData(form);
                 const stringifiedData = {};
                 formData.forEach((value, key) => {
@@ -222,9 +225,9 @@
                     body: new URLSearchParams(stringifiedData) 
                 })
                 .then(response => {
-                    message.innerHTML = "Message sent successfully";
+                    message.textContent = "Message sent successfully";
                     setTimeout(() => {
-                        message.innerHTML = "";
+                        message.textContent = "";
                     }, 5000);
                     form.reset();
                 })
@@ -232,7 +235,7 @@
             });
         });
     </script>
-    
+
 </body>
 
 </html>
