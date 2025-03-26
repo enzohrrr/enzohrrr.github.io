@@ -1,0 +1,399 @@
+:root {
+    --background-color: #080808;
+    --secondary-background-color: #151515;
+    --primary-color: #fff;
+    --secondary-color: #5e97eb;
+    --secondary-color-hover: #4a80c3;
+    --text-color: #D4D4D6;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan';
+    src: url('../fonts/LeagueSpartan.ttf') format('truetype');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'LeagueSpartan', sans-serif;
+    color: var(--primary-color);
+}
+
+html{
+    font-size: 62.5%;
+    height: 100%;
+    scroll-behavior: smooth;
+
+}
+
+body{
+    background-color: var(--background-color);
+    height: 100%;
+    overflow-x: hidden;
+}
+
+h1{
+    font-size: 7rem;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 6rem;
+    font-weight: 600;
+}
+
+ul{
+    display: flex;
+    gap: 6.5rem;
+}
+
+ul li {
+    font-size: 2.2rem;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    background-color: var(--secondary-color);
+    font-size: 2rem;
+    font-weight: 600;
+    width: 20rem;
+    padding: 1.5rem 0.5rem;
+    border-radius: 1rem;
+    border-style: none;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--secondary-color-hover);
+}
+
+span{
+    color: var(--secondary-color);
+}
+
+/* header */
+
+header{
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    padding-right: 22rem;
+    padding-top: 2.2rem;
+    padding-left: 10%;
+    justify-content: space-between;
+}
+
+header p{
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 0.5rem;
+}
+
+.burger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+/* Presentation part */
+
+main{
+    height: 100%;
+}
+
+.presentation{
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 9rem;
+}
+
+.presentation video{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100dvh;
+    z-index: -1;
+    pointer-events: none;
+    object-fit: cover;
+}
+
+.presentation-text{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.presentation-text p{
+    font-size: 3rem;
+}
+
+.presentation-text h1{
+    line-height: 120%;
+}
+
+/* About me part */
+
+.about-me {
+    display: flex;
+    gap: 8rem;
+    align-items: center;
+    padding-right: 18rem;
+    height: 100dvh;
+    padding-left: 10%;
+}
+
+.about-me-image{
+    max-width: 515px;
+    min-width: 350px;
+}
+.about-me-image img{
+    width: 100%;
+    border-radius: 1.5rem;
+}
+
+.about-me-text{
+    align-self: flex-start;
+    margin-top: 12.5rem;
+}
+.about-me-text h2{
+    margin-bottom: 2rem;
+}
+
+.about-me p, .about-me-text ul li{
+    color: var(--text-color);
+    font-size: 2rem;
+    text-align: justify;
+    line-height: 105%;
+}
+
+.about-me-tab{
+    display: flex;
+    gap: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.about-me-tab p{
+    cursor: pointer;
+}
+.tab-content {
+    display: none!important;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-me-text ul li{
+    display: flex;
+    flex-direction: column;
+}
+
+.about-me-text ul li span{
+    font-size: 1.4rem;
+}
+
+.tab-content.active-tab {
+    display: flex!important;
+}
+
+.tab-links {
+    cursor: pointer;
+}
+
+.tab-links.active-link {
+    color: var(--primary-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Latest Projects */
+
+.latest-project{
+    height: 100dvh;
+    background-color: var(--secondary-background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.latest-project h2{
+    padding-top: 5rem;
+    padding-bottom: 15rem;
+}
+
+.latest-project .swiper-container {
+    width: 40%;
+    padding-bottom: 5rem;
+}
+
+.latest-project .swiper-slide {
+    max-width: 700px;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.latest-project .picture img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.latest-project .detail {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.latest-project .detail h3 {
+    color: black;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.latest-project .detail span {
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.swiper-pagination-bullet {
+    background: #ccc !important;
+    opacity: 0.8 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #fff !important;
+    opacity: 1 !important;
+}
+
+/* footer */
+
+
+
+/* Responsive */
+@media (max-width: 980px) {
+    header{
+        flex-direction: column;
+        gap: 2rem;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .about-me-text{
+        height: 100%;
+        margin-top: 3rem;
+    }
+
+    .about-me {
+        flex-direction: column;
+        height: auto;
+        gap: 2rem;
+        padding-right: 10%;
+        padding-left: 10%;
+        margin-bottom: 10rem;
+    }
+    .about-me-image{
+        margin-top: 12.5rem;
+        max-width: 400px;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 690px) {
+
+    h1{
+        font-size: 5rem;
+    }
+    .presentation-text p{
+        font-size: 2.5rem;
+    }
+    button{
+        font-size: 1.8rem;
+        padding: 1.3rem 0;
+    }
+}
+@media (max-width: 560px) {
+    header {
+        padding-top:3rem;
+        padding-left: 10%;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    header p{
+        font-size: 3rem;
+    }
+    header ul {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        width: 40%;
+        background-color: var(--secondary-color);
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding-top: 8rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    header ul.active {
+        left: 0;
+    }
+
+    .burger {
+        position: fixed;
+        right: 3rem;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 0.5rem;
+        z-index: 1100;
+    }
+
+    .burger span {
+        width: 2.5rem;
+        height: 0.3rem;
+        background-color: var(--primary-color);
+        border-radius: 0.2rem;
+    }
+
+    h2{
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 400px) {
+    header ul {
+        width: 50%;
+    }
+    .about-me-text p{
+        font-size: 1.7rem;
+    }
+    .about-me-text ul li{
+        font-size: 1.7rem;
+    }
+}
