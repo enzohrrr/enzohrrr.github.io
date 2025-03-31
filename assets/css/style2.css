@@ -5,6 +5,7 @@
     --secondary-color: #5e97eb;
     --secondary-color-hover: #4a80c3;
     --text-color: #D4D4D6;
+    --background-input: #151515;
 }
 
 @font-face {
@@ -24,7 +25,6 @@ html{
     font-size: 62.5%;
     height: 100%;
     scroll-behavior: smooth;
-
 }
 
 body{
@@ -109,6 +109,24 @@ header p{
     height: 3px;
     background-color: var(--primary-color);
     border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+
+}
+.burger.toggle span:nth-child(1) {
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+}
+
+.burger.toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.toggle span:nth-child(3) {
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 0;
 }
 /* Presentation part */
 
@@ -286,11 +304,89 @@ main{
     opacity: 1 !important;
 }
 
-/* footer */
+/* contact */
 
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
 
+.contact h2{
+    padding-top: 5rem;
+    padding-bottom: 15rem;
+}
 
+.contact-form{
+    width: 100%;
+    height: 100%;
+
+}
+
+.contact-form form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.contact-form-row{
+    display: flex;
+    gap:2rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.contact-form-input{
+    display: flex;
+    flex-direction: column;
+    width: 36.5rem;
+}
+
+.contact-form-input label{
+    font-size: 1.5rem;
+}
+.contact-form-input input, .contact-form-input textarea{
+    border: 0;
+    outline: none;
+    padding: 2.2rem;
+    background-color: var(--background-input);
+    color: #fff;
+    font-size: 1.8rem;
+    border-radius: 0.6rem;
+}
+
+.contact-form-input-textarea{
+    width: 75rem;
+}
+.contact-form-input-textarea textarea{
+    resize: none;
+}
+
+.contact button{
+    font-size: 1.8rem;
+
+}
+.contact-link{
+    margin-bottom: 13rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.contact-link button{
+    padding: 1rem;
+    width: 13rem;
+}
 /* Responsive */
+
+
+@media (max-width: 1350px) {
+    .latest-project .swiper-container {
+        width: 50%;
+    }
+}
+
 @media (max-width: 980px) {
     header{
         flex-direction: column;
@@ -317,6 +413,32 @@ main{
         max-width: 400px;
         min-width: 100px;
     }
+
+    .latest-project .detail span{
+        font-size: 1.5rem;
+    }
+
+    .latest-project .swiper-container {
+        width: 70%;
+        margin-top: 5%;
+        margin-bottom: 2rem;
+    }
+
+
+}
+
+@media (max-width: 850px) {
+    .contact-form-input{
+        width: 24rem;
+    }
+
+    .contact-form-input input, .contact-form-input textarea{
+        font-size: 1.8rem;
+    }
+
+    .contact-form-input-textarea{
+        width: 50rem;
+    }
 }
 
 @media (max-width: 690px) {
@@ -331,6 +453,13 @@ main{
         font-size: 1.8rem;
         padding: 1.3rem 0;
     }
+
+    .latest-project .swiper-container {
+        width: 80%;
+        margin-top: 10%;
+    }
+
+
 }
 @media (max-width: 560px) {
     header {
@@ -384,6 +513,30 @@ main{
     h2{
         font-size: 4rem;
     }
+
+    .latest-project .swiper-container {
+        width: 90%;
+        margin-top: 13%;
+        margin-bottom: 20%;
+    }
+    .contact-form-row{
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .contact-form-input input, .contact-form-input textarea{
+        font-size: 1.4rem;
+    }
+
+
+    .contact-form-input{
+        width: 80%;
+    }
+
+    .contact h2{
+        padding-bottom: 5rem;
+    }
 }
 
 @media (max-width: 400px) {
@@ -395,5 +548,11 @@ main{
     }
     .about-me-text ul li{
         font-size: 1.7rem;
+    }
+
+    .latest-project .swiper-container {
+        width: 95%;
+        margin-top: 30%;
+        margin-bottom: 20%;
     }
 }

@@ -24,11 +24,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const burger = document.querySelector('.burger');
-    if (burger) {
+    const nav = document.querySelector('header ul');
+
+    if (burger && nav) {
         burger.addEventListener('click', () => {
-            document.querySelector('header ul').classList.toggle('active');
+            burger.classList.toggle('toggle');
+            nav.classList.toggle('active');
         });
     }
+
 
     var swiper = new Swiper(".swiper-container", {
         effect: "coverflow",
