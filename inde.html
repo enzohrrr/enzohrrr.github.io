@@ -4,238 +4,200 @@
 
 <head>
 
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enzo Herrera</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="assets/css/style.css">
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/style2.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 
 </head>
-
 <body>
+<header>
+    <p>Portfolio</p>
+    <div class="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</header>
 
-    <!-- Home Section -->
-    <header id="header">
-        <div class="container">
-            <nav>
-                <p class="title">Portfolio</p>
-                <ul id="sideMenu">
-                    <li><a href="#header">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <i class="fas fa-times" onclick="closeMenu()"></i>
-                </ul>
-                <i class="fas fa-bars" onclick="openMenu()"></i>
-            </nav>
-
-            <article class="header-text">
-                <p>Game Programmer</p>
-                <h1>Hi, I'm<br><span>Enzo</span> Herrera</h1>
-                <a href="assets/cv/cv.pdf" class="button" download="Enzo_Herrera_CV.pdf">Download CV</a>
-            </article>
-            <video autoplay muted loop id="backgroundVideo">
-                <source src="assets/videos/background.mp4" type="video/mp4">
-            </video>
-        </div>
-    </header>
-
-     <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <article class="row">
-                <article class="about-col-01">
-                    <img src="assets/images/user.jpg" alt="Enzo Herrera">
-                </article>
-                <article class="about-col-02">
-                    <h1 class="sub-title">About <span>Me</span></h1>
-                    <p>I am currently an aspiring Game Programmer with a strong skillset in Unreal Engine and Unity.
-                        I have a deep passion for turning my vision into reality with coding, especially in creating combat systems,
-                        which I am particularly passionate about. Currently,
-                        I am pursuing a Game Design Bachelor's Degree in France at ICAN Lyon.</p>
-                    <article class="tab-titles">
-                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                        <p class="tab-links" onclick="opentab('education')">Education</p>
-                    </article>
-
-                    <article class="tab-contents active-tab" id="skills">
-                        <ul>
-                            <li><span>Game Development</span><br>Gameplay Programming/Online Programming/Tool Programming/UI Programming/GAS</li>
-                            <li><span>3D Development</span><br>3D Modeling/UV Mapping/Rigging/Texturing</li>
-                            <li><span>Interface Design</span><br>UI/UX Design</li>
-                            <li><span>General</span><br>Game Prototyping/Versality</li>
-                        </ul>
-                    </article>
-                    <article class="tab-contents" id="experience">
-                        <ul>
-                            <li><span>2023-2024</span><br>Internship at GENEZ - Online Programming (Mirror/FizzySteamworks)</li>
-                            <li><span>2019</span><br>Observation Internship at 6tematik</li>
-                        </ul>
-                    </article>
-                    <article class="tab-contents" id="education">
-                        <ul>
-                            <li><span>2025</span><br>Bachelor's Degree in Game Design at ICAN Lyon</li>
-                            <li><span>2021</span><br>General Baccalaureate with a focus on Computer Science, Mathematics and English</li>
-                        </ul>
-                    </article>
-                </article>
-            </article>
+<main>
+    <section class="presentation">
+        <video autoplay muted loop>
+            <source src="assets/videos/background.mp4" type="video/mp4">
+        </video>
+        <div class="presentation-text">
+            <p>Game Programmer</p>
+            <h1>Hi, I'm<br><span>Enzo</span> Herrera</h1>
+            <button class="button" onclick="downloadCV()">Download CV</button>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h1 class="sub-title">Latest <span>Projects</span></h1>
-        <div class="container">
-            <article class="projects-list">
-                <article class="project">
-                    <img src="assets/images/project_01.png">
-                    <article class="portfolio-layer">
-                        <h3>Echoes</h3>
-                        <p>Made with Unreal Engine 5 (C++/Blueprint)</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-                    </article>
-                </article>
-                <article class="project">
-                    <img src="assets/images/project_02.png">
-                    <article class="portfolio-layer">
-                        <h3>Evanescent</h3>
-                        <p>Made with Unreal Engine 5 (Blueprint)</p>
-                        <a href="evanescent.html">View</a>
-                    </article>
-                </article>
-                <article class="project">
-                    <img src="assets/images/project_03.jpg">
-                    <article class="portfolio-layer">
-                        <h3>Crimson Abyss</h3>
-                        <p>Made with Unreal Engine 5 (C++/Blueprint)</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-                    </article>
-                </article>
-                <article class="project">
-                    <img src="assets/images/project_04.jpeg">
-                    <article class="portfolio-layer">
-                        <h3>Rusher</h3>
-                        <p>Made with Unity (C#)</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-                    </article>
-                </article>
-                <article class="project">
-                    <img src="assets/images/project_05.jpg">
-                    <article class="portfolio-layer">
-                        <h3>Project 05</h3>
-                        <p>Made in Unreal Engine 5 with Blueprints</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-                    </article>
-                </article>
-                <article class="project">
-                    <img src="assets/images/project_06.jpg">
-                    <article class="portfolio-layer">
-                        <h3>Project 06</h3>
-                        <p>Made in Unreal Engine 5 with Blueprints</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-                    </article>
-                </article>
-            </article>
-            <a href="#" class="button seeAll">See All</a>
+    <section class="about-me">
+        <div class="about-me-image">
+            <img alt='Enzo HERRERA' src="assets/images/user.jpg">
+        </div>
+        <div class="about-me-text">
+            <h2>About <span>Me</span></h2>
+            <p>
+                I am currently an aspiring Game Programmer with a strong skillset in Unreal Engine and Unity.
+                I have a deep passion for turning my vision into reality with coding, especially in creating combat
+                systems,
+                which I am particularly passionate about. Currently, I am pursuing a Game Design Bachelor's Degree in
+                France at
+                ICAN Lyon.
+            </p>
+
+            <div class="about-me-tab">
+                <p class="tab-links active-link" data-tab="skills">Skills</p>
+                <p class="tab-links" data-tab="experience">Experience</p>
+                <p class="tab-links" data-tab="education">Education</p>
+            </div>
+
+            <ul class="tab-content active-tab" id="skills">
+                <li><span>Game Development</span>Gameplay Programming / Online Programming / Tool Programming / UI
+                    Programming / GAS
+                </li>
+                <li><span>3D Development</span>3D Modeling / UV Mapping / Rigging / Texturing</li>
+                <li><span>Interface Design</span>UI/UX Design</li>
+                <li><span>General</span>Game Prototyping / Versatility</li>
+            </ul>
+
+            <ul class="tab-content" id="experience">
+                <li><span>2023-2024</span>Internship at GENEZ - Online Programming (Mirror/FizzySteamworks)</li>
+                <li><span>2019</span>Observation Internship at 6tematik</li>
+            </ul>
+
+            <ul class="tab-content" id="education">
+                <li><span>2025</span>Bachelor's Degree in Game Design at ICAN Lyon</li>
+                <li><span>2021</span>General Baccalaureate with a focus on Computer Science, Mathematics and English
+                </li>
+            </ul>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h1 class="sub-title">Contact <span>Me</span></h1>
-        <div class="container">
+    <section class="latest-project">
+        <h2> Latest <span>Projects</span></h2>
+        <div class="carousel-wrapper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="picture">
+                            <img src="assets/images/project_01.png" alt="">
+                        </div>
+                        <div class="detail">
+                            <h3>Echoes</h3>
+                            <span>Made with Unreal Engine 5 (C++/Blueprint)</span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="picture">
+                            <img src="assets/images/project_02.png" alt="">
+                        </div>
+                        <div class="detail">
+                            <h3>Evanescent</h3>
+                            <span>Made with Unreal Engine 5 (Blueprint)</span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="picture">
+                            <img src="assets/images/project_03.jpg" alt="">
+                        </div>
+                        <div class="detail">
+                            <h3>Crimson Abyss</h3>
+                            <span>Made with Unreal Engine 5 (C++/Blueprint)</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="picture">
+                            <img src="assets/images/project_04.jpeg" alt="">
+                        </div>
+                        <div class="detail">
+                            <h3>Rusher</h3>
+                            <span>Made with Unity (C#)</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="picture">
+                            <img src="assets/images/project_05.jpg" alt="">
+                        </div>
+                        <div class="detail">
+                            <h3>Project 05</h3>
+                            <span>Made in Unreal Engine 5 with Blueprints</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="picture">
+                            <img src="assets/images/project_06.jpg" alt="">
+                        </div>
+                        <div class="detail">
+                            <h3>Project 06</h3>
+                            <span>Made in Unreal Engine 5 with Blueprints</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+    </section>
+    <section class="contact">
+        <h2> Contact <span>Me</span></h2>
+        <div class="contact-form">
             <form id="contact-form" method="post" action="" name="submit-to-google-sheet">
-                <article class="input-box">
-                    <input type="text" name="Name" placeholder="Full Name" autocomplete="off" required pattern="[A-Za-z\s]+" title="Please enter a valid name">
-                    <input type="email" name="Email" placeholder="Email Address" autocomplete="off" required>
-                </article>
-                <article class="input-box">
-                    <input type="tel" name="Mobile" placeholder="Mobile Number" autocomplete="off" required pattern="\d+" title="Please enter a valid phone number">
-                    <input type="text" name="Subject" placeholder="Email Subject" autocomplete="off" required>
-                </article>
-                <textarea name="Message" cols="30" rows="10" placeholder="Your Message" autocomplete="off" required></textarea>
+                <div class="contact-form-row">
+                    <div class="contact-form-input">
+                        <label for='name'>Full name</label>
+                        <input type="text" id="name" name="name" placeholder="Full Name" autocomplete="off" required pattern="[A-Za-z\s]+" title="Please enter a valid name">
+                    </div>
+                    <div class="contact-form-input">
+                        <label for='email'>Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Email Address" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="contact-form-row">
+                    <div class="contact-form-input">
+                        <label for='mobile'>Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" autocomplete="off" required pattern="\d+" title="Please enter a valid phone number">
+                    </div>
+                    <div class="contact-form-input">
+                        <label for='subject'>Email Subject</label>
+                        <input type="text" id='subject' name="subject" placeholder="Email Subject" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="contact-form-row">
+                    <div class="contact-form-input contact-form-input-textarea">
+                        <label for='message'>Your Message</label>
+                        <textarea name="message" id="message" cols="30" rows="10" placeholder="Your Message" autocomplete="off" required></textarea>
+                    </div>
+                </div>
+
                 <button type="submit" class="button sendMessage">Send Message</button>
             </form>
-            <span id="message"></span>
-            <article class="social-links">
-                <a href="https://www.linkedin.com/in/enzo-herrera-gp/" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://github.com/enzohrrr" target="_blank">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-            </article>
+        </div>
+        <div class="contact-link">
+            <button type="button" class="button" onclick="window.open('https://www.linkedin.com/in/enzo-herrera-gp/', '_blank', 'noopener,noreferrer')">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </button>
+            <button type="button" class="button" onclick="window.open('https://github.com/enzohrrr', '_blank', 'noopener,noreferrer')">
+                <i class="fab fa-github"></i> GitHub
+            </button>
         </div>
     </section>
-
-    <!-- Functions-->
-    <script>
-        var sideMenu = document.getElementById("sideMenu");
-
-        function openMenu() {
-            sideMenu.style.right = "0";
-        }
-
-        function closeMenu() {
-            sideMenu.style.right = "-200px";
-        }
-    </script>
-
-    <script>
-        var tablinks = document.getElementsByClassName("tab-links");
-        var tabcontents = document.getElementsByClassName("tab-contents");
-
-        function opentab(tabname) {
-            for (tablink of tablinks) {
-                tablink.classList.remove("active-link");
-            }
-
-            for (tabcontent of tabcontents) {
-                tabcontent.classList.remove("active-tab");
-            }
-
-            event.currentTarget.classList.add("active-link");
-            document.getElementById(tabname).classList.add("active-tab");
-        }
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyTr5dVgpAB3Ntm8vSKZT9vFmf7b4xcLxN2TthG0QrbW8harCRJdJAm4g-7_sQzPbor/exec';
-            const form = document.forms['submit-to-google-sheet'];
-            const message = document.getElementById("message");
-
-            form.addEventListener('submit', e => {
-                e.preventDefault();
-
-                const formData = new FormData(form);
-                const stringifiedData = {};
-                formData.forEach((value, key) => {
-                    stringifiedData[key] = value.toString();
-                });
-
-                fetch(scriptURL, {
-                    method: 'POST',
-                    body: new URLSearchParams(stringifiedData)
-                })
-                .then(response => {
-                    message.textContent = "Message sent successfully";
-                    setTimeout(() => {
-                        message.textContent = "";
-                    }, 5000);
-                    form.reset();
-                })
-                .catch(error => console.error('Error!', error.message));
-            });
-        });
-    </script>
-
+</main>
 </body>
 
-</html>
+
