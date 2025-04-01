@@ -33,22 +33,45 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    new Swiper('.visuals-swiper', {
+        slidesPerView: 3,
+        spaceBetween: 0,
+        centeredSlides: false,
+        loop: false,
+        allowTouchMove: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1
+            },
+            560: {
+                slidesPerView: 2
+            },
+            768: {
+                slidesPerView: 3
+            }
+        }
+    });
 
-    var swiper = new Swiper(".swiper-container", {
-        effect: "coverflow",
+    new Swiper('.latest-project-swiper', {
         grabCursor: true,
         centeredSlides: true,
         slidesPerView: "auto",
+        effect: "coverflow",
         coverflowEffect: {
             rotate: 20,
             stretch: 0,
-            depth: 350,
+            depth: 300,
             modifier: 1,
-            slideShadows: true
+            slideShadows: true,
         },
         pagination: {
-            el: ".swiper-pagination"
-        },
+            el: ".swiper-pagination",
+            clickable: true
+        }
     });
 });
 
