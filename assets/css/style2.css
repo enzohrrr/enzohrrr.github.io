@@ -312,6 +312,23 @@ main{
     opacity: 1 !important;
 }
 
+.project-button {
+    padding: 1rem 2rem;
+    margin-left: 2rem;
+    background-color: var(--secondary-color);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.6rem;
+    border-radius: 0.8rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+
+.project-button:hover {
+    background-color: var(--secondary-color-hover);
+}
+
 /* contact */
 
 .contact{
