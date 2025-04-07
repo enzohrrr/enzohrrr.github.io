@@ -1,5 +1,5 @@
 function downloadCV() {
-    const pdfURL = 'assets/cv/cv.pdf';
+    const pdfURL = 'assets/documents/cv.pdf';
     const link = document.createElement('a');
     link.href = pdfURL;
     link.download = 'Enzo_Herrera_CV.pdf';
