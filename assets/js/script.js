@@ -89,6 +89,23 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => console.error('Error!', error.message));
     });
+
+
+    const animatedElements = document.querySelectorAll('.animate-entry');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2 // L'animation se déclenche quand 20% de l'élément est visible
+    });
+
+    animatedElements.forEach(el => observer.observe(el));
+
 });
 
 

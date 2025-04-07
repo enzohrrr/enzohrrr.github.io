@@ -600,7 +600,10 @@ ul li a:hover {
     object-fit: contain;
 }
 
-/* Swiper for Visuals */
+.swiper-slide img{
+    cursor: pointer;
+}
+    /* Swiper for Visuals */
 .visuals-swiper {
     width: 100%;
     overflow: hidden;
@@ -1063,3 +1066,77 @@ ul li a:hover {
 
 }
 
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Classe commune pour l'animation d'entrée */
+.animate-entry {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* État final : l'élément devient visible et remonte */
+.animate-entry.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Pour les éléments positionnés à gauche */
+.animate-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Pour les éléments positionnés à droite */
+.animate-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Pour les éléments centrés */
+.animate-center {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-center.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+header {
+    animation: slideDown 0.8s ease-out forwards;
+}

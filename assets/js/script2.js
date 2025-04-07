@@ -46,4 +46,24 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+
+    const leftElements = document.querySelectorAll('.animate-left');
+    const rightElements = document.querySelectorAll('.animate-right');
+    const centerElements = document.querySelectorAll('.animate-center');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    leftElements.forEach(el => observer.observe(el));
+    rightElements.forEach(el => observer.observe(el));
+    centerElements.forEach(el => observer.observe(el));
+
 });
