@@ -58,12 +58,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyTr5dVgpAB3Ntm8vSKZT9vFmf7b4xcLxN2TthG0QrbW8harCRJdJAm4g-7_sQzPbor/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw9snAZCC2i6NPF9jKmPthGXfVQPBKp_80sPc3Yh4AKWxYGFKZbQZw_EYZ_WGSOw-kkHg/exec';
     const form = document.forms['submit-to-google-sheet'];
     const formMessage = document.getElementById("formMessage");
 
     form.addEventListener('submit', e => {
-        e.preventDefault();  // Empêche le rechargement de la page
+        e.preventDefault();
 
         const formData = new FormData(form);
         const stringifiedData = {};
@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         fetch(scriptURL, {
             method: 'POST',
+            mode: 'no-cors',
             body: new URLSearchParams(stringifiedData)
         })
             .then(response => {
