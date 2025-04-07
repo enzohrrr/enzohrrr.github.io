@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/style2.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/script.js" defer></script>
 
 </head>
 <body>
@@ -34,7 +34,7 @@
 
 <main>
     <section class="presentation animate-entry" id="home">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline preload="auto">
             <source src="assets/videos/background.mp4" type="video/mp4">
         </video>
         <div class="presentation-text">
@@ -46,7 +46,7 @@
 
     <section class="about-me animate-entry" id="about">
         <div class="about-me-image">
-            <img alt='Enzo HERRERA' src="assets/images/user.jpg">
+            <img alt='Enzo HERRERA' src="assets/images/user.jpg" loading="lazy">
         </div>
         <div class="about-me-text">
             <h2>About <span>Me</span></h2>
@@ -94,7 +94,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="picture">
-                            <img src="assets/images/project_01.png" alt="">
+                            <img src="assets/images/project_01.png" alt="" loading="lazy">
                         </div>
                         <div class="detail">
                             <h3>Echoes</h3>
@@ -106,7 +106,7 @@
 
                     <div class="swiper-slide">
                         <div class="picture">
-                            <img src="assets/images/project_02.png" alt="">
+                            <img src="assets/images/project_02.png" alt="" loading="lazy">
                         </div>
                         <div class="detail">
                             <h3>Evanescent</h3>
@@ -116,7 +116,7 @@
 
                     <div class="swiper-slide">
                         <div class="picture">
-                            <img src="assets/images/project_03.jpg" alt="">
+                            <img src="assets/images/project_03.jpg" alt="" loading="lazy">
                         </div>
                         <div class="detail">
                             <h3>Crimson Abyss</h3>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="picture">
-                            <img src="assets/images/project_04.jpeg" alt="">
+                            <img src="assets/images/project_04.jpeg" alt="" loading="lazy">
                         </div>
                         <div class="detail">
                             <h3>Rusher</h3>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="picture">
-                            <img src="assets/images/project_05.jpg" alt="">
+                            <img src="assets/images/project_05.jpg" alt="" loading="lazy">
                         </div>
                         <div class="detail">
                             <h3>Project 05</h3>
@@ -143,7 +143,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="picture">
-                            <img src="assets/images/project_06.jpg" alt="">
+                            <img src="assets/images/project_06.jpg" alt="" loading="lazy">
                         </div>
                         <div class="detail">
                             <h3>Project 06</h3>
