@@ -6,6 +6,7 @@
     --secondary-color-hover: #4a80c3;
     --text-color: #D4D4D6;
     --background-input: #151515;
+    --hover-special: #f5f5f5;
 }
 
 @font-face {
@@ -57,19 +58,22 @@ a{
     text-decoration: none;
 }
 
-button{
+button {
     background-color: var(--secondary-color);
     font-size: 2rem;
     font-weight: 600;
     width: 20rem;
     padding: 1.5rem 0.5rem;
     border-radius: 1rem;
-    border-style: none;
+    border: none;
     cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-button:hover{
+button:hover {
     background-color: var(--secondary-color-hover);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--secondary-color-hover);
 }
 
 span{
@@ -226,20 +230,48 @@ main{
     font-size: 1.4rem;
 }
 
+li a{
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+ul li a:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px var(--secondary-color-hover);
+    color: var(--hover-special);
+}
 .tab-content.active-tab {
     display: flex!important;
 }
 
 .tab-links {
+    position: relative;
     cursor: pointer;
+    padding-bottom: 0.3rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .tab-links.active-link {
-    color: var(--primary-color);
-    font-weight: bold;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: none;
+}
+.tab-links::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
 }
 
+.tab-links:hover::after,
+.tab-links.active-link::after {
+    width: 50%;
+}
 /* Latest Projects */
 
 
@@ -326,13 +358,20 @@ main{
     font-size: 1.6rem;
     border-radius: 0.8rem;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    border: none;
     width: 40%;
+
+    transition: transform 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+    text-align: center;
 }
 
 
 .project-button:hover {
     background-color: var(--secondary-color-hover);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--secondary-color-hover)
 }
 
 /* contact */
