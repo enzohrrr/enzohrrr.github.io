@@ -289,6 +289,10 @@ main{
     padding-bottom: 2rem;
     font-weight: 600;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
 }
 
 .latest-project .detail h3 {
@@ -301,7 +305,9 @@ main{
     font-size: 2rem;
     color: var(--secondary-color);
 }
-
+.latest-project-swiper {
+    overflow: hidden;
+}
 .swiper-pagination-bullet {
     background: #ccc !important;
     opacity: 0.8 !important;
@@ -313,8 +319,7 @@ main{
 }
 
 .project-button {
-    padding: 1rem 2rem;
-    margin-left: 2rem;
+    padding: 1rem;
     background-color: var(--secondary-color);
     color: #fff;
     font-weight: bold;
@@ -322,6 +327,7 @@ main{
     border-radius: 0.8rem;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    width: 40%;
 }
 
 
@@ -345,8 +351,6 @@ main{
 
 .contact-form{
     width: 100%;
-    height: 100%;
-
 }
 
 .contact-form form{
@@ -836,3 +840,141 @@ main{
         height: 6px;
     }
 }
+
+
+@media screen and (max-width: 1000px) and (orientation: landscape) {
+    header {
+        padding-top:3rem;
+        padding-left: 10%;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    header p{
+        font-size: 3rem;
+    }
+    header ul {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        width: 20%;
+        background-color: var(--secondary-color);
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding-top: 8rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    header ul.active {
+        left: 0;
+    }
+
+    .burger {
+        position: fixed;
+        right: 3rem;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 0.5rem;
+        z-index: 1100;
+    }
+
+    .burger span {
+        width: 2.5rem;
+        height: 0.3rem;
+        background-color: var(--primary-color);
+        border-radius: 0.2rem;
+    }
+
+    h2{
+        font-size: 4rem;
+    }
+
+    .projet-presentation{
+        height: 70vh;
+    }
+    .about-game{
+        margin-bottom: 10rem;
+    }
+
+
+    h1{
+        font-size: 3rem;
+    }
+
+    button{
+        width: 10rem;
+        font-size: 1.5rem;
+    }
+
+    h2{
+        font-size: 3rem;
+    }
+
+    .latest-project{
+        padding-top: 2rem;
+    }
+    .latest-project h2{
+        padding: 0;
+    }
+    .latest-project .swiper-slide{
+        max-width: 300px;
+    }
+    .swiper-container{
+        padding-bottom: 3.5rem;
+    }
+    .swiper-pagination-bullet {
+        width: 7px;
+        height: 7px;
+    }
+    .project-button{
+        font-size: 1.3rem;
+        padding: 0.75rem;
+    }
+    .latest-project .detail{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .latest-project .detail span {
+        font-size: 1.3rem;
+    }
+
+    .about-me p, .about-me-text ul li{
+        font-size: 1.6rem;
+    }
+
+    .about-me-image {
+        margin-top: 12.5rem;
+        max-width: 270px;
+        min-width: 50px;
+    }
+
+    .contact h2{
+        padding-bottom: 4rem;
+    }
+
+    .contact-form-input input, .contact-form-input textarea{
+        font-size: 1.6rem;
+        padding: 1.5rem;
+    }
+
+    .contact button {
+        font-size: 1.5rem;
+        width: 15rem;
+    }
+
+
+    .contact-link button {
+        padding: 0.7rem;
+    }
+
+}
+
