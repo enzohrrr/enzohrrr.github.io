@@ -779,6 +779,10 @@ ul li a:hover {
     .contact-form-input-textarea{
         width: 50rem;
     }
+
+    .form-message {
+        max-width: 500px!important;
+    }
 }
 
 @media (max-width: 690px) {
@@ -891,6 +895,11 @@ ul li a:hover {
         padding-left: 2rem;
         padding-right: 2rem;
         width: 100%
+    }
+
+    .form-message {
+        max-width: 425px!important;
+        width: 80%;
     }
 }
 
@@ -1139,4 +1148,25 @@ ul li a:hover {
 
 header {
     animation: slideDown 0.8s ease-out forwards;
+}
+
+.form-message {
+    display: none;
+    max-width: 750px;
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+    opacity: 0;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 0.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    overflow-wrap: break-word;
+}
+
+
+.form-message.show {
+    display: block;
+    opacity: 1;
 }

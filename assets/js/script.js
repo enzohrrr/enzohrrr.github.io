@@ -55,9 +55,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw9snAZCC2i6NPF9jKmPthGXfVQPBKp_80sPc3Yh4AKWxYGFKZbQZw_EYZ_WGSOw-kkHg/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwexGcJu806_9yVrOyvwmpQffNMZ2zhe2RrjGExwZ7Y-Kj1t8HlMX7S51_O0rs8O8O_fw/exec';
     const form = document.forms['submit-to-google-sheet'];
-    const formMessage = document.getElementById("formMessage");
+    const formMessage = document.querySelector(".form-message");
+
+
+
     if (form) {
         form.addEventListener('submit', e => {
             e.preventDefault();
@@ -70,22 +73,40 @@ document.addEventListener("DOMContentLoaded", function() {
 
             fetch(scriptURL, {
                 method: 'POST',
-                mode: 'no-cors',
+                mode: 'no-cors', // La réponse sera opaque, mais cela permet de contourner les problèmes CORS
                 body: new URLSearchParams(stringifiedData)
             })
                 .then(response => {
                     if (formMessage) {
                         formMessage.textContent = "Message sent successfully";
+                        formMessage.classList.add("show");
                         setTimeout(() => {
-                            formMessage.textContent = "";
+                            formMessage.classList.remove("show");
                         }, 5000);
-                    } else {
-                        alert("Message sent successfully");
                     }
                     form.reset();
                 })
                 .catch(error => console.error('Error!', error.message));
         });
+    }
+
+    function showToast(message, duration = 5000) {
+        const toast = document.querySelector('.form-message');
+        if (!toast) return;
+
+        toast.textContent = message;
+        toast.style.display = "block";
+
+        requestAnimationFrame(() => {
+            toast.classList.add("visible");
+        });
+
+        setTimeout(() => {
+            toast.classList.remove("visible");
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 300);
+        }, duration);
     }
 
     const animatedElements = document.querySelectorAll('.animate-entry');
