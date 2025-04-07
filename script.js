@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     new Swiper('.visuals-swiper', {
         slidesPerView: 3,
+        slidesPerGroup: 1,  // on force un défilement par slide
         spaceBetween: 0,
         centeredSlides: false,
         loop: false,
@@ -43,17 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
             el: '.swiper-pagination',
             clickable: true
         },
-        breakpoints: {
-            0: {
-                slidesPerView: 1
-            },
-            560: {
-                slidesPerView: 2
-            },
-            768: {
-                slidesPerView: 3
-            }
-        }
     });
 
     new Swiper('.latest-project-swiper', {
@@ -73,6 +63,30 @@ document.addEventListener("DOMContentLoaded", function() {
             clickable: true
         }
     });
+
+
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("imgModal");
+    const closeBtn = document.querySelector(".close");
+
+    const images = document.querySelectorAll('.projet-image-wrapper img, .swiper-slide img');
+
+    images.forEach((img) => {
+        img.addEventListener('click', () => {
+            modal.classList.add("active");
+            modalImg.src = img.src;
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove("active");
+    });
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("active");
+        }
+    });
+
 });
 
 
