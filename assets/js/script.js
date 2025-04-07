@@ -33,18 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    new Swiper('.visuals-swiper', {
-        slidesPerView: 3,
-        slidesPerGroup: 1,  // on force un défilement par slide
-        spaceBetween: 0,
-        centeredSlides: false,
-        loop: false,
-        allowTouchMove: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-        },
-    });
+
 
     new Swiper('.latest-project-swiper', {
         grabCursor: true,
@@ -65,28 +54,40 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 
-    const modal = document.getElementById("myModal");
-    const modalImg = document.getElementById("imgModal");
-    const closeBtn = document.querySelector(".close");
 
-    const images = document.querySelectorAll('.projet-image-wrapper img, .swiper-slide img');
 
-    images.forEach((img) => {
-        img.addEventListener('click', () => {
-            modal.classList.add("active");
-            modalImg.src = img.src;
+
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyTr5dVgpAB3Ntm8vSKZT9vFmf7b4xcLxN2TthG0QrbW8harCRJdJAm4g-7_sQzPbor/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    const formMessage = document.getElementById("formMessage");
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();  // Empêche le rechargement de la page
+
+        const formData = new FormData(form);
+        const stringifiedData = {};
+        formData.forEach((value, key) => {
+            stringifiedData[key] = value.toString();
         });
-    });
 
-    closeBtn.addEventListener('click', () => {
-        modal.classList.remove("active");
+        fetch(scriptURL, {
+            method: 'POST',
+            body: new URLSearchParams(stringifiedData)
+        })
+            .then(response => {
+                if(formMessage) {
+                    formMessage.textContent = "Message sent successfully";
+                    setTimeout(() => {
+                        formMessage.textContent = "";
+                    }, 5000);
+                } else {
+                    alert("Message sent successfully");
+                }
+                form.reset();
+            })
+            .catch(error => console.error('Error!', error.message));
     });
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove("active");
-        }
-    });
-
 });
 
 
