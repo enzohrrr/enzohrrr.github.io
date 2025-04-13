@@ -7,6 +7,9 @@
     --text-color: #D4D4D6;
     --background-input: #151515;
     --hover-special: #f5f5f5;
+    --download-color: #57d613;
+    --liminalsquad-color: #62dcff;
+    --evanescent-color: #9f5afd;
 }
 
 @font-face {
@@ -78,6 +81,14 @@ button:hover {
 
 span{
     color: var(--secondary-color);
+}
+
+span.liminalsquad{
+    color: var(--liminalsquad-color);
+}
+
+span.evanescent{
+    color: var(--evanescent-color);
 }
 
 /* header */
@@ -450,8 +461,16 @@ ul li a:hover {
     padding: 1rem;
     width: 13rem;
 }
-/* Page Projet */
 
+.button.linkedin{
+    background-color: #0077b5;
+}
+
+.button.github{
+    background-color: #8250df;
+}
+
+/* Page Projet */
 .projet-presentation {
     position: relative;
     height: 60vh;
@@ -471,16 +490,32 @@ ul li a:hover {
     z-index: 0;
 }
 
+.project01 {
+    background-image: url('../../assets/images/liminalsquad/liminalsquad_background.png');
+}
+
+.project02 {
+    background-image: url('../../assets/images/evanescent/evanescent_background.png');
+}
+
 .projet-titre {
     position: relative;
     z-index: 1;
-    background: linear-gradient(to top, var(--background-color), transparent);
+    background: linear-gradient(to top, var(--background-color) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
     padding: 5rem;
     width: 100%;
 }
 
-.projet-titre h1{
-    margin-left: 8%;
+.game-logo {
+    max-width: 400px;
+    filter: drop-shadow(0 0 6px var(--background-color));
+}
+
+.button.download{
+    position: absolute;
+    top: 6rem;
+    right: 24rem;
+    background-color: var(--download-color);
 }
 
 
@@ -498,6 +533,7 @@ ul li a:hover {
     text-wrap: stable;
 }
 .about-game ul{
+    padding-top: 6rem;
     flex-direction: column;
     gap: 2rem;
 }
@@ -534,7 +570,9 @@ ul li a:hover {
 }
 
 .projet-content-left p, .projet-content-right p, .projet-content-center p{
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 2.5rem;
     text-align: justify;
     margin-bottom: 1rem;
 }

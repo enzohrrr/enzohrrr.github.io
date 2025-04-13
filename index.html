@@ -15,8 +15,9 @@
     <link rel="stylesheet" href="dist/css/styles.min.css">
     <script src="dist/js/scripts.min.js"></script>
 </head>
+
 <body>
-<header>
+<header id="header">
     <p>Portfolio</p>
     <div class="burger">
         <span></span>
@@ -24,7 +25,7 @@
         <span></span>
     </div>
     <ul>
-        <li><a href="#hero">Home</a></li>
+        <li><a href="#header">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -34,7 +35,7 @@
 <main>
     <section class="presentation animate-entry" id="home">
         <video autoplay muted loop playsinline preload="auto">
-            <source src="assets/videos/background.mp4" type="video/mp4">
+            <source src="assets/videos/liminalsquad_edit.mp4" type="video/mp4">
         </video>
         <div class="presentation-text">
             <p>Game Programmer</p>
@@ -65,12 +66,12 @@
             </div>
 
             <ul class="tab-content active-tab" id="skills">
-                <li><span>Game Development</span>Gameplay Programming / Online Programming / Tool Programming / UI
-                    Programming / GAS
-                </li>
-                <li><span>3D Development</span>3D Modeling / UV Mapping / Rigging / Texturing</li>
-                <li><span>Interface Design</span>UI/UX Design</li>
-                <li><span>General</span>Game Prototyping / Versatility</li>
+                <li><span>Engine</span>Unreal Engine 4 & 5 / Unity</li>
+                <li><span>Programming</span>C++ / C# / Online Programming / Blueprints / Gameplay Systems / UI Programming</li>
+                <li><span>Development Practices</span>Clean Code Architecture / OOP / Component-Based Design</li>
+                <li><span>Versionning</span>Github Desktop / Plastic</li>
+                <li><span>Project Management</span>Jira / HacknPlan</li>
+                <li><span>Versatility</span>Game Design / 3D Modeling / UI & UX</li>
             </ul>
 
             <ul class="tab-content" id="experience">
@@ -91,6 +92,29 @@
         <div class="carousel-wrapper">
             <div class="swiper-container latest-project-swiper">
                 <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="picture">
+                            <img src="assets/images/liminalsquad/" alt="" >
+                        </div>
+                        <div class="detail">
+                            <h3>Liminal Squad</h3>
+                            <span>Made with Unreal Engine 5 (C++)</span>
+                            <a href="projects/liminalsquad.html" class="project-button">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="picture">
+                            <img src="assets/images/Evanescent/evanescent_keyvisual.png" alt="" >
+                        </div>
+                        <div class="detail">
+                            <h3>Evanescent</h3>
+                            <span>Made with Unreal Engine 5 (Blueprint)</span>
+                            <a href="projects/evanescent.html" class="project-button">View Project</a>
+                        </div>
+                    </div>
+
                     <div class="swiper-slide">
                         <div class="picture">
                             <img src="assets/images/project_01.png" alt="" >
@@ -98,30 +122,11 @@
                         <div class="detail">
                             <h3>Echoes</h3>
                             <span>Made with Unreal Engine 5 (C++/Blueprint)</span>
-                            <a href="Projets/projet1.html" class="project-button">View Project</a>
+                            <a href="projets/projet1.html" class="project-button">View Project</a>
 
                         </div>
                     </div>
 
-                    <div class="swiper-slide">
-                        <div class="picture">
-                            <img src="assets/images/project_02.png" alt="" >
-                        </div>
-                        <div class="detail">
-                            <h3>Evanescent</h3>
-                            <span>Made with Unreal Engine 5 (Blueprint)</span>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="picture">
-                            <img src="assets/images/project_03.jpg" alt="" >
-                        </div>
-                        <div class="detail">
-                            <h3>Crimson Abyss</h3>
-                            <span>Made with Unreal Engine 5 (C++/Blueprint)</span>
-                        </div>
-                    </div>
                     <div class="swiper-slide">
                         <div class="picture">
                             <img src="assets/images/project_04.jpeg" alt="" >
@@ -131,30 +136,13 @@
                             <span>Made with Unity (C#)</span>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="picture">
-                            <img src="assets/images/project_05.jpg" alt="" >
-                        </div>
-                        <div class="detail">
-                            <h3>Project 05</h3>
-                            <span>Made in Unreal Engine 5 with Blueprints</span>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="picture">
-                            <img src="assets/images/project_06.jpg" alt="" >
-                        </div>
-                        <div class="detail">
-                            <h3>Project 06</h3>
-                            <span>Made in Unreal Engine 5 with Blueprints</span>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-
     </section>
+
     <section class="contact animate-entry" id="contact">
         <h2> Contact <span>Me</span></h2>
         <span id="formMessage" class="form-message"></span>
@@ -192,15 +180,13 @@
             </form>
         </div>
         <div class="contact-link">
-            <button type="button" class="button" onclick="window.open('https://www.linkedin.com/in/enzo-herrera-gp/', '_blank', 'noopener,noreferrer')">
+            <button type="button" class="button linkedin" onclick="window.open('https://www.linkedin.com/in/enzo-herrera-gp/', '_blank', 'noopener,noreferrer')">
                 <i class="fab fa-linkedin"></i> LinkedIn
             </button>
-            <button type="button" class="button" onclick="window.open('https://github.com/enzohrrr', '_blank', 'noopener,noreferrer')">
+            <button type="button" class="button github" onclick="window.open('https://github.com/enzohrrr', '_blank', 'noopener,noreferrer')">
                 <i class="fab fa-github"></i> GitHub
             </button>
         </div>
     </section>
 </main>
 </body>
-
-
