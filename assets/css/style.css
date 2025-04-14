@@ -396,7 +396,7 @@ ul li a:hover {
 
 .contact h2{
     padding-top: 5rem;
-    padding-bottom: 15rem;
+    padding-bottom: 10rem;
 }
 
 .contact-form{
@@ -508,13 +508,15 @@ ul li a:hover {
 
 .game-logo {
     max-width: 400px;
+    min-width: 300px;
     filter: drop-shadow(0 0 6px var(--background-color));
+    margin-right: 5rem;
 }
 
 .button.download{
     position: absolute;
     top: 6rem;
-    right: 24rem;
+    right: 11.5%;
     background-color: var(--download-color);
 }
 
@@ -593,18 +595,12 @@ ul li a:hover {
 .projet-image-wrapper img, .projet-image-wrapper video{
     width: 100%;
     height: 400px;
-    object-fit: contain;
-    border-radius: 1rem;
-}
-
-.projet-image-wrapper img, .projet-image-wrapper video{
-    width: 100%;
-    height: 400px;
     justify-self: center;
     align-self: center;
     object-fit: contain;
-    border-radius: 1rem;
+    border-radius: 8%;
 }
+
 .projet-content-right{
     flex-direction: row-reverse;
 }
@@ -617,9 +613,6 @@ ul li a:hover {
     padding: 5rem 5% 15rem 5%;
 }
 
-.projet-visuel h2 {
-    padding-top: 2rem;
-}
 .projet-visuel-wrapper {
     width: 100%;
     max-width: 1000px;
@@ -670,7 +663,7 @@ ul li a:hover {
     padding-left: 1rem;
     padding-right: 1rem;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: 5%;
 }
 
 .visuals-swiper .swiper-pagination {
@@ -764,14 +757,14 @@ ul li a:hover {
     }
 }
 @media (max-width: 980px) {
-    header{
+    header {
         flex-direction: column;
         gap: 2rem;
         padding-right: 0;
         padding-left: 0;
     }
 
-    .about-me-text{
+    .about-me-text {
         height: 100%;
         margin-top: 3rem;
     }
@@ -784,13 +777,14 @@ ul li a:hover {
         padding-left: 10%;
         margin-bottom: 10rem;
     }
-    .about-me-image{
+
+    .about-me-image {
         margin-top: 12.5rem;
         max-width: 400px;
         min-width: 100px;
     }
 
-    .latest-project .detail span{
+    .latest-project .detail span {
         font-size: 1.5rem;
     }
 
@@ -798,13 +792,22 @@ ul li a:hover {
         height: 50vh;
     }
 
-    .latest-project-swiper{
+    .latest-project-swiper {
         padding-left: 2rem;
         padding-right: 2rem;
         overflow: hidden;
     }
-}
 
+    .button.download {
+        position: static;
+        top: auto;
+        right: auto;
+    }
+
+    .game-logo{
+        margin-right: 0;
+    }
+}
 @media (max-width: 850px) {
     .contact-form-input{
         width: 24rem;
@@ -884,6 +887,9 @@ ul li a:hover {
         z-index: 1100;
     }
 
+    main{
+        overflow-x: hidden;
+    }
     .burger span {
         width: 2.5rem;
         height: 0.3rem;
@@ -912,7 +918,7 @@ ul li a:hover {
     }
 
     .contact h2{
-        padding-bottom: 5rem;
+        padding-bottom: 7rem;
     }
     .about-game h2{
         text-wrap: nowrap;
@@ -921,6 +927,10 @@ ul li a:hover {
         font-size: 1.65rem;
     }
 
+    .about-game{
+        height: 70dvh;
+        padding-right: 0;
+    }
     .projet-presentation {
         height: 40vh;
     }
@@ -938,7 +948,17 @@ ul li a:hover {
     .form-message {
         max-width: 425px!important;
         width: 80%;
+        padding: 0.5rem !important;
+        margin-top: 10.5rem!important;
     }
+
+
+    .game-logo{
+        max-width: 200px;
+        min-width: 200px;
+        margin-right: 4rem;
+    }
+
 }
 
 @media (max-width: 400px) {
@@ -1189,22 +1209,22 @@ header {
 }
 
 .form-message {
-    display: none;
-    max-width: 750px;
-    margin-bottom: 2rem;
-    padding: 1rem 2rem;
-    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
     background-color: var(--secondary-color);
     color: #fff;
-    border-radius: 0.5rem;
     font-size: 1.8rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
     text-align: center;
+    opacity: 0;
     transition: opacity 0.3s ease;
-    overflow-wrap: break-word;
+    margin-top: 13rem;
 }
-
-
 .form-message.show {
-    display: block;
-    opacity: 1;
+    opacity: 1;                 /* Le message apparaît quand on ajoute la classe "show" */
 }
+
