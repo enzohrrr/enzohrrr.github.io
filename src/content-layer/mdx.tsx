@@ -2,9 +2,9 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { Children, type ComponentProps } from "react";
 
+import { MgfFileTree } from "@/components/projects/mgf-file-tree";
 import { cn, slugify } from "@/lib/utils";
 
-/** Flatten a heading's children to plain text for a stable slug id. */
 function headingText(children: React.ReactNode): string {
   return Children.toArray(children)
     .map((c) => (typeof c === "string" ? c : ""))
@@ -12,6 +12,7 @@ function headingText(children: React.ReactNode): string {
 }
 
 const mdxComponents = {
+  MgfFileTree,
   h2: ({ className, children, ...props }: ComponentProps<"h2">) => (
     <h2
       id={slugify(headingText(children))}
