@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Enable class-based dark mode so it works with next-themes (attribute="class"). */
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design tokens — a sober, premium, mostly-monochrome system with a single
+ * cool accent (`--brand`). Light + dark are defined explicitly; dark is the
+ * default theme (set on <html> by next-themes / suppressHydrationWarning).
+ */
+:root {
+  --radius: 0.7rem;
+
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.18 0.004 285);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.004 285);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.004 285);
+
+  --primary: oklch(0.21 0.004 285);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.967 0.001 286);
+  --secondary-foreground: oklch(0.21 0.004 285);
+
+  --muted: oklch(0.967 0.001 286);
+  --muted-foreground: oklch(0.52 0.006 286);
+
+  --accent: oklch(0.967 0.001 286);
+  --accent-foreground: oklch(0.21 0.004 285);
+
+  --destructive: oklch(0.577 0.22 27);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.916 0.002 286);
+  --input: oklch(0.916 0.002 286);
+  --ring: oklch(0.62 0.13 268);
+
+  /* Brand accent — used sparingly for links, highlights, gradients. */
+  --brand: oklch(0.55 0.17 268);
+  --brand-foreground: oklch(0.985 0 0);
+}
+
+.dark {
+  --background: oklch(0.135 0.004 285);
+  --foreground: oklch(0.965 0 0);
+
+  --card: oklch(0.165 0.005 285);
+  --card-foreground: oklch(0.965 0 0);
+
+  --popover: oklch(0.175 0.005 285);
+  --popover-foreground: oklch(0.965 0 0);
+
+  --primary: oklch(0.965 0 0);
+  --primary-foreground: oklch(0.16 0.004 285);
+
+  --secondary: oklch(0.225 0.005 285);
+  --secondary-foreground: oklch(0.965 0 0);
+
+  --muted: oklch(0.205 0.005 285);
+  --muted-foreground: oklch(0.71 0.008 286);
+
+  --accent: oklch(0.235 0.006 285);
+  --accent-foreground: oklch(0.965 0 0);
+
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.6 0.15 268);
+
+  --brand: oklch(0.7 0.15 270);
+  --brand-foreground: oklch(0.16 0.004 285);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Refined text selection. */
+  ::selection {
+    background: color-mix(in oklch, var(--brand) 28%, transparent);
+  }
+}
+
+/* Subtle utility: a thin top-to-bottom fade used for hero/section dividers. */
+@utility container-px {
+  @apply px-5 sm:px-8 lg:px-12;
+}
+
+/*
+ * Slow, seamless vertical drift for the hero blueprint grid. The grid pattern
+ * repeats every 216px, so translating by exactly one period loops invisibly.
+ * Disabled automatically for users who prefer reduced motion (see @layer base).
+ */
+@keyframes hero-grid-drift {
+  from {
+    transform: translateY(-216px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hero-grid-drift {
+  animation: hero-grid-drift 26s linear infinite;
+}
+
+/* Slowly breathing/drifting aurora glow behind the hero. */
+@keyframes aurora {
+  0% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 0.16;
+  }
+  50% {
+    transform: translate(-46%, 6%) scale(1.12);
+    opacity: 0.24;
+  }
+  100% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 0.16;
+  }
+}
+
+.aurora {
+  animation: aurora 14s ease-in-out infinite;
+}
+
+/* Infinite horizontal marquee (list is duplicated, so -50% loops seamlessly). */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 80s linear infinite;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}

@@ -1,0 +1,79 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# HOW TO ADD A PROJECT (≈ 2 minutes)
+# 1. Copy this file and rename it to your-project-slug.mdx
+#    (the file name becomes the URL: /projects/your-project-slug)
+# 2. Fill in the frontmatter below. Required fields are marked [required].
+# 3. Drop images in /public/images/projects/ and reference them by path.
+# 4. Write the long-form story under the frontmatter using Markdown/MDX.
+# 5. Save. It auto-appears in the list, filters, sitemap, and gets its own page.
+#    (Leading "_" hides this template from the site.)
+# Validation runs at build time — a missing/invalid field fails the build with
+# a precise message, so you can't ship a broken project page.
+# ─────────────────────────────────────────────────────────────────────────────
+
+title: "Project Title"                       # [required]
+summary: "One or two sentences for cards and search/meta description."  # [required]
+date: "2025-01-01"                            # [required] YYYY-MM-DD
+role: "Your Role"                             # [required]
+
+technologies:                                 # [required] at least one
+  - "C++"
+  - "Unreal Engine 5"
+
+# [required] at least one. Allowed values (these drive the filters):
+# "Unreal Engine" | "C++" | "Multiplayer" | "Networking" | "Gameplay" | "Tools" | "Frameworks"
+categories:
+  - "Unreal Engine"
+  - "Gameplay"
+
+tags:                                         # optional, free-form
+  - "Example"
+
+banner: "/images/projects/your-banner.svg"    # [required] wide hero + OG image
+# thumbnail: "/images/projects/your-thumb.svg" # optional, defaults to banner
+# logo: "/images/projects/your-logo.svg"       # optional
+
+gallery:                                       # optional; alt text is required per image
+  - src: "/images/projects/your-1.svg"
+    alt: "Describe the image for accessibility."
+    caption: "Optional caption shown in the lightbox."
+
+videos:                                         # optional; .mp4 in /public/videos/projects/
+  - src: "/videos/projects/your-clip.mp4"
+    title: "Combat System"                      # optional heading above the clip
+    poster: "/images/projects/your-1.svg"       # optional preview image
+    caption: "Optional caption shown under the video."
+
+objectives:                                    # optional bullet list
+  - "What the project set out to achieve."
+
+results:                                       # optional bullet list
+  - "A measurable outcome or shipped feature."
+
+links:                                         # optional
+  github: "https://github.com/you/your-repo"
+  website: "https://your-project.example.com"
+
+featured: false                                # true → shown on the home page
+draft: false                                   # true → hidden from the site
+---
+
+## Presentation
+
+Describe the project: what it is, who it's for, and your role in it.
+
+## Challenges
+
+What made it hard? The interesting technical or design problems you faced.
+
+## Technical solutions
+
+How you solved them. Code blocks, lists, and **emphasis** are supported:
+
+```cpp
+// Code samples render with the site's styling.
+void Example() {}
+```
+
+> Pull quotes work too — useful for a key insight or result.

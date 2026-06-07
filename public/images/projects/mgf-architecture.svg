@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" role="img" aria-label="MGF module architecture diagram">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="1000" fill="#101016"/>
+  <text x="80" y="70" fill="#fafafa" font-family="sans-serif" font-size="34" font-weight="700">Module architecture</text>
+  <text x="80" y="108" fill="#8b8b97" font-family="monospace" font-size="20">7 modules · no circular dependencies · lower modules never reach up</text>
+
+  <!-- arrows (depends on) -->
+  <g stroke="#8b5cf6" stroke-width="2.5" stroke-opacity="0.85" fill="none">
+    <path d="M740 182 L400 358" marker-end="url(#ah)"/>
+    <path d="M800 182 L800 358" marker-end="url(#ah)"/>
+    <path d="M860 182 L1210 358" marker-end="url(#ah)"/>
+    <path d="M630 406 L524 406" marker-end="url(#ah)"/>
+    <path d="M800 452 L800 638" marker-end="url(#ah)"/>
+    <path d="M350 640 L350 454" marker-end="url(#ah)"/>
+  </g>
+
+  <!-- Core -->
+  <g>
+    <rect x="600" y="90" width="400" height="92" rx="14" fill="#1a1626" stroke="#8b5cf6" stroke-opacity="0.6"/>
+    <text x="800" y="132" text-anchor="middle" fill="#fafafa" font-family="sans-serif" font-size="26" font-weight="700">MirageCoreModule</text>
+    <text x="800" y="160" text-anchor="middle" fill="#a78bfa" font-family="monospace" font-size="17">integration &amp; system bridges</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g>
+    <rect x="180" y="360" width="340" height="92" rx="14" fill="#181820" stroke="#8b5cf6"/>
+    <text x="350" y="402" text-anchor="middle" fill="#fafafa" font-family="sans-serif" font-size="24" font-weight="700">InventorySystem</text>
+    <text x="350" y="429" text-anchor="middle" fill="#8b8b97" font-family="monospace" font-size="16">items · fragments · equipment</text>
+  </g>
+  <g>
+    <rect x="630" y="360" width="340" height="92" rx="14" fill="#181820" stroke="#2c2c3a"/>
+    <text x="800" y="402" text-anchor="middle" fill="#fafafa" font-family="sans-serif" font-size="24" font-weight="700">CombatSystem</text>
+    <text x="800" y="429" text-anchor="middle" fill="#8b8b97" font-family="monospace" font-size="16">GAS abilities · weapons · firearms</text>
+  </g>
+  <g>
+    <rect x="1080" y="360" width="340" height="92" rx="14" fill="#181820" stroke="#2c2c3a"/>
+    <text x="1250" y="402" text-anchor="middle" fill="#fafafa" font-family="sans-serif" font-size="24" font-weight="700">InteractionSystem</text>
+    <text x="1250" y="429" text-anchor="middle" fill="#8b8b97" font-family="monospace" font-size="16">spatial grid · behaviors</text>
+  </g>
+
+  <!-- Row 3 -->
+  <g>
+    <rect x="180" y="640" width="340" height="92" rx="14" fill="#181820" stroke="#2c2c3a"/>
+    <text x="350" y="682" text-anchor="middle" fill="#fafafa" font-family="sans-serif" font-size="24" font-weight="700">ContainerSystem</text>
+    <text x="350" y="709" text-anchor="middle" fill="#8b8b97" font-family="monospace" font-size="16">loot tables · access policies</text>
+  </g>
+  <g>
+    <rect x="630" y="640" width="340" height="92" rx="14" fill="#181820" stroke="#8b5cf6"/>
+    <text x="800" y="682" text-anchor="middle" fill="#fafafa" font-family="sans-serif" font-size="24" font-weight="700">HitboxSystem</text>
+    <text x="800" y="709" text-anchor="middle" fill="#8b8b97" font-family="monospace" font-size="16">anim-driven hit detection</text>
+  </g>
+
+  <!-- legend -->
+  <g font-family="monospace" font-size="18">
+    <rect x="1080" y="660" width="22" height="22" rx="5" fill="#181820" stroke="#8b5cf6"/>
+    <text x="1112" y="677" fill="#8b8b97">leaf module (no MGF deps)</text>
+    <path d="M1086 716 H1118" stroke="#8b5cf6" stroke-width="2.5" marker-end="url(#ah)"/>
+    <text x="1130" y="722" fill="#8b8b97">depends on</text>
+    <text x="1080" y="762" fill="#5c5c68">+ MirageGameFrameworkEditor (editor-only)</text>
+  </g>
+</svg>

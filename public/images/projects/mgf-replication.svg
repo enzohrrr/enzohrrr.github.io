@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" role="img" aria-label="MGF server-authoritative replication diagram">
+  <defs>
+    <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="1000" fill="#101016"/>
+  <text x="80" y="80" fill="#fafafa" font-family="sans-serif" font-size="34" font-weight="700">Server-authoritative by default</text>
+  <text x="80" y="118" fill="#8b8b97" font-family="monospace" font-size="20">clients request · the server decides &amp; mutates · UIs are event-driven</text>
+
+  <!-- Client -->
+  <rect x="110" y="280" width="520" height="470" rx="16" fill="#181820" stroke="#2c2c3a"/>
+  <text x="150" y="340" fill="#fafafa" font-family="sans-serif" font-size="28" font-weight="700">Client</text>
+  <text x="150" y="372" fill="#8b8b97" font-family="monospace" font-size="17">requests &amp; reacts</text>
+  <rect x="150" y="410" width="440" height="120" rx="10" fill="#101016" stroke="#2c2c3a"/>
+  <text x="172" y="452" fill="#cdc7e0" font-family="monospace" font-size="18">UI drag-drop / input</text>
+  <text x="172" y="486" fill="#5c5c68" font-family="monospace" font-size="16">sends a request RPC</text>
+  <rect x="150" y="560" width="440" height="150" rx="10" fill="#101016" stroke="#2c2c3a"/>
+  <text x="172" y="602" fill="#a78bfa" font-family="monospace" font-size="18">Slot widget repaints</text>
+  <text x="172" y="636" fill="#5c5c68" font-family="monospace" font-size="16">on PostReplicatedAdd /</text>
+  <text x="172" y="660" fill="#5c5c68" font-family="monospace" font-size="16">PostReplicatedChange — no tick</text>
+
+  <!-- Server -->
+  <rect x="970" y="280" width="520" height="470" rx="16" fill="#1a1626" stroke="#8b5cf6" stroke-opacity="0.6"/>
+  <text x="1010" y="340" fill="#fafafa" font-family="sans-serif" font-size="28" font-weight="700">Server</text>
+  <text x="1010" y="372" fill="#a78bfa" font-family="monospace" font-size="17">authoritative mutations</text>
+  <g font-family="monospace" font-size="18" fill="#cdc7e0">
+    <text x="1010" y="452">1 · validate the request</text>
+    <text x="1010" y="498">2 · mutate state (AddItem,</text>
+    <text x="1034" y="524">Server_EquipItem, …)</text>
+    <text x="1010" y="570">3 · write to FastArray list</text>
+    <text x="1010" y="616">4 · GAS effects / abilities</text>
+    <text x="1034" y="642">(server-only handles)</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#8b5cf6" stroke-width="2.5" stroke-opacity="0.9" fill="none">
+    <path d="M630 410 L970 410" marker-end="url(#ah3)"/>
+    <path d="M970 640 L630 640" marker-end="url(#ah3)"/>
+  </g>
+  <text x="800" y="395" text-anchor="middle" fill="#a78bfa" font-family="monospace" font-size="17">request RPC</text>
+  <text x="800" y="625" text-anchor="middle" fill="#a78bfa" font-family="monospace" font-size="17">FastArray deltas + callbacks</text>
+
+  <text x="110" y="900" fill="#5c5c68" font-family="monospace" font-size="18">only changed entries replicate · GAS handles re-derived in BeginPlay on reconnect</text>
+</svg>
