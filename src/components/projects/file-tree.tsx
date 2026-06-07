@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Folder, FolderOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { cn } from "@/lib/utils";
@@ -54,6 +54,11 @@ function TreeItem({ node, depth }: { node: TreeNode; depth: number }) {
             open && !isEmpty && "rotate-90"
           )}
         />
+        {open && !isEmpty ? (
+          <FolderOpen className="size-[11px] shrink-0 text-muted-foreground/60" />
+        ) : (
+          <Folder className="size-[11px] shrink-0 text-muted-foreground/60" />
+        )}
         <span>{node.name}/</span>
       </button>
 
