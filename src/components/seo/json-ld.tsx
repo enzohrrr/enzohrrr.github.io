@@ -41,7 +41,9 @@ export function ProjectJsonLd({ project }: { project: ProjectMeta }) {
         name: project.title,
         abstract: project.summary,
         url: `${siteConfig.url}/projects/${project.slug}`,
-        image: `${siteConfig.url}${project.banner}`,
+        ...(project.banner && {
+          image: `${siteConfig.url}${project.banner}`,
+        }),
         dateCreated: project.date.toISOString(),
         keywords: [...project.categories, ...project.technologies].join(", "),
         creator: {

@@ -208,8 +208,8 @@ export const siteConfig = {
 
   /** Headline numbers, shown as animated count-up stats on the home page. */
   stats: [
-    { value: 7, suffix: "", label: "Framework modules" },
-    { value: 6, suffix: "", label: "Gameplay systems" },
+    { value: 11, suffix: "", label: "Framework modules" },
+    { value: 10, suffix: "", label: "Gameplay systems" },
     { value: 100, suffix: "%", label: "Server-authoritative" },
     { value: 5, suffix: ".7", label: "Unreal Engine" },
   ],

@@ -53,8 +53,9 @@ export const projectFrontmatterSchema = z.object({
   categories: z.array(categoryEnum).min(1),
   tags: z.array(z.string().min(1)).default([]),
 
-  /** Wide hero / Open Graph image (path under /public). */
-  banner: z.string().min(1),
+  /** Wide hero / Open Graph image (path under /public). Optional: without it
+   * the detail page renders a text-only hero and cards show a placeholder. */
+  banner: z.string().min(1).optional(),
   /** Card image; falls back to `banner` when omitted. */
   thumbnail: z.string().optional(),
   /** Optional project logo/mark. */

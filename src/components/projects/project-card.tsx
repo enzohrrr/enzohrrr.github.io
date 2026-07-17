@@ -12,13 +12,21 @@ export function ProjectCard({ project }: { project: ProjectMeta }) {
       className="group relative flex flex-col overflow-hidden rounded-2xl border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-        <Image
-          src={project.cover}
-          alt=""
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-        />
+        {project.cover ? (
+          <Image
+            src={project.cover}
+            alt=""
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+          />
+        ) : (
+          <div className="absolute inset-0 grid place-items-center">
+            <span className="px-6 text-center font-mono text-sm uppercase tracking-[0.25em] text-muted-foreground/70">
+              {project.title}
+            </span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-card/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
 

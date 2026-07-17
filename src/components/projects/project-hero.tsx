@@ -17,9 +17,17 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 export function ProjectHero({ project }: { project: Project }) {
   return (
     <section className="relative">
-      <ParallaxBanner src={project.banner} alt={`${project.title} banner`} />
+      {project.banner && (
+        <ParallaxBanner src={project.banner} alt={`${project.title} banner`} />
+      )}
 
-      <Container className="relative -mt-28 pb-4 md:-mt-36">
+      <Container
+        className={
+          project.banner
+            ? "relative -mt-28 pb-4 md:-mt-36"
+            : "relative pt-28 pb-4 md:pt-36"
+        }
+      >
         <Button
           asChild
           variant="ghost"

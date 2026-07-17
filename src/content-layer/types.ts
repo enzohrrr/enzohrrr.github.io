@@ -12,8 +12,8 @@ import type { ProjectFrontmatter } from "./schema";
 export interface ProjectMeta extends ProjectFrontmatter {
   /** Derived from the filename (`<slug>.mdx`). */
   slug: string;
-  /** Canonical card image (thumbnail ?? banner). */
-  cover: string;
+  /** Canonical card image (thumbnail ?? banner); absent when neither is set. */
+  cover?: string;
   /** Pre-formatted year for compact display. */
   year: number;
 }
