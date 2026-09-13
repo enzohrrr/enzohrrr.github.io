@@ -1,153 +1,229 @@
 ---
 title: "Mirage Game Framework"
-summary: "A modular, server-authoritative gameplay framework for Unreal Engine 5.7. Eleven modules covering stats, inventory, equipment, combat, hit detection, loot, interaction, AI, audio, and camera, composed through fragments, gameplay tags, GAS, and StateTree."
-date: "2026-07-17"
+summary: "A modular, server-authoritative gameplay framework for Unreal Engine 5.8. Twenty-six C++ modules covering combat, AI, inventory, crafting, quests, dialogue, saving, online sessions and UI, with measured performance budgets and over a thousand automation tests."
+date: "2026-09-13"
 role: "Framework Architect & Programmer"
 technologies:
   - "C++"
-  - "Unreal Engine 5.7"
+  - "Unreal Engine 5.8"
   - "Gameplay Ability System"
+  - "Iris Replication"
   - "StateTree"
-  - "FastArraySerializer"
+  - "Mover"
+  - "Epic Online Services"
   - "Gameplay Tags"
-  - "Gameplay Cameras"
-  - "Niagara"
+  - "Geometry Processing"
+  - "Unreal Automation Spec"
+  - "Unreal Insights"
 categories:
   - "Unreal Engine"
   - "C++"
   - "Multiplayer"
   - "Networking"
   - "Gameplay"
+  - "Tools"
   - "Frameworks"
 tags:
   - "Framework"
-  - "GAS"
   - "Server-Authoritative"
   - "Replication"
+  - "Iris"
   - "Lag Compensation"
-  - "Inventory"
-  - "Equipment"
+  - "GAS"
   - "Combat"
-  - "Loot"
-  - "Interaction"
   - "AI"
   - "AI Director"
   - "StateTree"
-  - "Audio"
-  - "Camera"
+  - "Inventory"
+  - "Crafting"
+  - "Quests"
+  - "Dialogue"
+  - "Save System"
+  - "Online Sessions"
+  - "Dismemberment"
+  - "Editor Tooling"
+  - "Automated Testing"
+  - "Profiling"
   - "Modular Architecture"
   - "Data-Driven"
-  - "MMO-Scale"
 objectives:
-  - "Provide the systems every action RPG needs, networked correctly out of the box."
-  - "Make systems extensible by composition, so you add a capability instead of rewriting the core."
-  - "Keep modules decoupled, so a project can use one system without the others."
+  - "Provide the gameplay systems an online action RPG needs, with server authority and replication designed in from the start."
+  - "Extend by composition: a new capability is a fragment, a data asset or a component, not a change to the core."
+  - "Keep modules independent, so a project can use one system without taking the others."
+  - "Base performance decisions on measurements taken on the server, not on estimates."
 results:
-  - "11 modules (10 runtime + 1 editor) with zero circular dependencies."
-  - "Server-authoritative replication via FastArray delta serialization, plus server-side lag compensation with hit rewind."
-  - "Full GAS integration for players (ASC on PlayerState) and AI (ASC on the pawn)."
-  - "StateTree-driven AI with perception, suspicion, squads, patrols, and a director that orchestrates encounters."
-  - "Data-driven authoring: 20+ custom asset types with factories, editor tooling, and component visualizers."
-  - "Powers several in-development games that prove its modularity and scalability."
+  - "26 modules (20 runtime, 4 editor, 2 development) in 1,742 C++ files and about 196,000 lines, with no circular module dependencies."
+  - "Push-model replication on every replicated property, with per-player data sent only to the players who can use it."
+  - "91 automation specs and 1,073 test cases, most running against a real UWorld and game instance rather than mocks."
+  - "62 instrumented systems and 14 memory pools reporting to Unreal Insights, stat counters and budget reports, including on a dedicated server."
+  - "Record-based save backend with optimistic concurrency, entity leases and an append-only item ledger."
+  - "Shared foundation of two games in development: an online listen-server project and a single-player project."
 featured: true
 ---
 
 ## Overview
 
-A C++ gameplay framework for Unreal Engine 5.7, shipped as one multi-module
-plugin. It covers the systems most action RPGs need: stats and damage,
-inventory, equipment, combat, hit detection, loot, interaction, AI, audio, and
-camera. Each is built once, networked correctly, and made to extend rather
-than rewrite.
+Mirage Game Framework (MGF) is a C++ plugin for Unreal Engine 5.8 that
+provides the gameplay layer of an online action RPG: combat, AI, inventory and
+equipment, containers and loot, crafting, quests, dialogue, saving, online
+sessions, UI and editor tooling.
 
-It consolidates two earlier plugins (inventory and combat) into one
-architecture, and it's the base I build other games on.
-
-## What it handles for you
-
-- **Replication done right.** Every inventory, equipment, container, stat, and
-  interaction list uses a `FFastArraySerializer`, so only deltas replicate and
-  client UI updates are event-driven instead of polled. A lag-compensation
-  subsystem rewinds hitboxes so shots land where the client saw them.
-- **GAS wired up.** Equipment can apply Gameplay Effects, grant abilities, and
-  drive animation layers through the Ability System Component, for players and
-  AI alike. A stat↔GAS bridge keeps replicated stats and attributes in sync.
-- **AI out of the box.** StateTree behaviors with perception, suspicion,
-  awareness, squads, patrols, and hit reactions — coordinated by an AI
-  director that paces encounters, with significance and dormancy keeping large
-  populations cheap.
-- **No brittle coupling.** Systems talk through gameplay tags, delegates, a
-  gameplay message subsystem, and runtime component resolution, so one module
-  can be used without the others.
-- **Authoring without code.** Items, weapons, loot tables, interactions, AI
-  archetypes, patrol routes, music states, and camera rigs are data assets
-  built in the editor, backed by a custom dev tool and gameplay debugger
-  categories.
+It started as two separate plugins, one for inventory and one for combat, and
+became a single architecture that two games in development now build on.
 
 ## Design principles
 
 1. **Composition over inheritance.** An item is a data asset holding a list of
-   *fragments*, and each fragment adds one capability (stackable, equippable,
-   usable, firearm). You never subclass an item; you add a fragment.
-2. **Gameplay tags instead of enums.** Slots, weapon types, combat states, and
-   interaction states are all `FGameplayTag`s, so adding one is a data change
-   rather than a recompile.
-3. **Server authority.** All meaningful mutations run on the server and
-   replicate down. Clients request; the server decides.
-4. **Data-driven content.** Designers author content as assets. Programmers
-   extend the systems that consume them.
-5. **Resolve, don't store.** Components discover their collaborators at runtime
-   by walking the owner chain, so your class hierarchy doesn't have to match the
-   framework's.
+   fragments, each adding one capability (stackable, equippable, craftable,
+   firearm). Components reach actors through data-driven composition recipes
+   instead of being placed by hand on Blueprints.
+2. **Server authority.** Clients send requests; the server validates them and
+   changes the replicated state. A client never changes gameplay state on its
+   own.
+3. **Gameplay tags as identifiers.** Slots, weapon types, states, factions and
+   message channels are native `FGameplayTag`s declared in C++, so adding one is
+   a data change rather than an enum edit.
+4. **Data-driven content.** Designers author items, recipes, quests, dialogue,
+   AI archetypes and death profiles as assets. Programmers extend the systems
+   that read them.
+5. **Measure before optimizing.** Periodic sweeps and server hot paths are
+   instrumented, and budgets are written from recorded baselines.
 
 ## Architecture
 
-Eleven modules (ten runtime, one editor-only), each owning a clear slice and
-depending only on the ones beneath it, with no circular dependencies.
-`MirageFoundation` sits at the bottom with the shared vocabulary (stats,
-damage, factions, spatial queries, messaging); the gameplay modules build on
-it; `MirageIntegration` bridges them all at the top.
+Modules are organized in tiers, and dependencies only point downward.
+`MirageFoundationModule` depends on the engine alone and holds the shared
+services: stats, damage, factions, spatial hashing, the message bus, lag
+compensation, component resolution, actor pooling and profiling. Gameplay
+modules build on it without depending on each other. `MirageIntegrationModule`
+is the only runtime module that combines several of them, and holds the base
+characters, controllers and cross-system bridges.
 
 | Module | Responsibility |
 | --- | --- |
-| **MirageFoundation** | Shared base layer: stats & modifiers, damage pipeline, factions, target lock/registry, lag compensation, spatial hash grid, gameplay message bus. |
-| **MirageIntegration** | Integration layer: base characters/PlayerState/GameMode, cross-system bridge components (stat↔GAS, AI↔combat, audio feedback), indicator UI, component injection, world-item actor. |
-| **MirageInventory** | Inventory & equipment components, item data + fragments, item & context-menu subsystems, related UI. |
-| **MirageCombat** | GAS combat component, weapon-state & firearm components, weapon actors, combo chains, hit-stop, action & weapon-pattern registries. |
-| **MirageHitbox** | Animation-driven hit detection, reusable shapes, projectiles/beams/damage volumes, hit cue. |
-| **MirageContainer** | Container component & actor, container/loot assets, seeded loot-generator subsystem. |
-| **MirageInteraction** | Interactor/interactable components, server-side spatial-grid detection, interaction behavior fragments. |
-| **MirageAI** | StateTree tasks/evaluators/conditions, perception & suspicion, squads, patrols, spawning & population, AI director, significance & dormancy. |
-| **MirageAudio** | Music & ambient director subsystems, audio zones (volumes & splines), music states, ambient palettes, gameplay SFX. |
-| **MirageCamera** | Camera director & mode component on Gameplay Cameras, rig-set assets, per-player camera settings. |
-| **MirageGameFrameworkEditor** | 20+ asset types & factories, in-editor dev tool with live panels, component visualizers for patrol routes & interaction points. |
+| **Foundation** | Stats and modifiers, damage pipeline, factions, lag compensation, RPC rate limiting, actor pooling, asset residency, lifecycle and death, item ledger, profiling. |
+| **Save** | Server-side save orchestration over a swappable storage backend, with slot saves and per-record saves. |
+| **Animation** | Data-driven animation layering: bone masks portable across skeletons, overlays and linked layer sets, built on stock engine nodes. |
+| **Movement** | Mover-based character movement, offered alongside the Character Movement Component. |
+| **Online** | Backend-agnostic sessions, parties, sign-in and overlay, split by capability. |
+| **OnlineEOS** | Epic Online Services implementation of the online contract. |
+| **UI** | Layered UI stack, notification queue, screen-space indicators, menu navigation, themes, nameplates. |
+| **AI** | StateTree nodes, perception and awareness, squads, patrols, population budget, significance LOD, AI director. |
+| **Combat** | GAS combo trees, melee actions, firearms with hitscan and projectile modes, ballistics, hit-stop, camera shake. |
+| **Hitbox** | Animation-driven hit detection, projectiles, damage volumes, hit zones resolved per skeleton. |
+| **Dismemberment** | Runtime severing of any bone on any skeletal mesh, with optional generated cut geometry. |
+| **Inventory** | Items and fragments, per-copy instance data, equipment, overflow escrow, item store contract. |
+| **Container** | Containers and loot generation, with contents replicated only to the player viewing them. |
+| **Craft** | Server-side crafting queues, stations, quality tiers, recipe discovery, offline progress. |
+| **Interaction** | Server-side candidate detection on a spatial grid, multi-point interactables, interaction sessions. |
+| **Quest** | Quest definitions kept separate from per-player progress, event-indexed objectives. |
+| **Dialogue** | Branching conversations, server-validated choices, cinematic shot framing. |
+| **Audio** | Music and ambient directors, audio zones, gameplay sound routing. |
+| **Camera** | Camera modes and rigs on Gameplay Cameras, lock-on, per-player preferences. |
+| **Cheat** | Server-authoritative cheat commands with permission levels and an audit log, excluded from Shipping. |
+| **Integration** | Base classes, cross-system bridges, actor composition, dropping and picking up items. |
+| **GameFrameworkEditor** | Editor mode, asset factories and asset actions, component visualizers. |
+| **QuestEditor** | Node-based quest graph editor. |
+| **DialogueEditor** | Node-based dialogue editor with shot preview and an embedded Sequencer timeline. |
+| **EditorAutomation** | Content Browser folder colors applied automatically from project rules. |
+| **Test** | Automation specs, test harnesses and test doubles. |
 
-## Systems
+## Gameplay systems
 
-| System | Highlights |
-| --- | --- |
-| **Stats & damage** | Replicated stat registry, data-driven stat definitions & modifiers, damage pipeline with hit-zone multipliers, factions, GAS bridge. |
-| **Inventory** | Slot-based, weight, stacking, runtime slot expansion, drag-drop UI, data-driven context menu. |
-| **Equipment** | Tag-based slots, GAS effects & granted abilities on equip, async weapon-actor attachment, equipped-vs-drawn states. |
-| **Combat** | GAS abilities, input-buffered combo chains, weapon draw/sheath, firearms (ADS, reload, recoil, spread), hit-stop, notify-driven windows. |
-| **Hitbox** | Per-frame & path-sweep detection from anim notifies, shape presets, projectiles, beams, damage volumes, lag-compensated rewind. |
-| **Container** | Access policies (public/personal/shared), slot filters, specialized slots, seeded loot tables with weighted pools. |
-| **Interaction** | Server-side spatial-grid detection, multi-point interactables, behavior fragments (instant/hold/multi-press/cooldown). |
-| **AI** | StateTree behaviors, EQS tactical positioning, perception/suspicion/awareness, squads & shared stimuli, patrol routes, AI director pacing encounters. |
-| **Audio** | Music director with tag-driven states, ambient director with palettes, audio zones, encounter music reacting to combat. |
-| **Camera** | Gameplay Cameras rig sets, per-context camera modes, target lock framing, player camera preferences. |
+- **Combat.** Combo trees resolve abstract inputs against the equipped weapon,
+  with direction, hold and timing conditions per step. Abilities run as GAS
+  `LocalPredicted`, so an attack starts on the frame of input and the server
+  validates it. A character with nothing equipped attacks with a natural weapon
+  (claws, fists) through the same resolution path.
+- **Firearms.** One component drives every firearm from data: hitscan or
+  projectile, stance-based spread, recoil patterns, damage falloff and armor
+  penetration. The ballistics model is a pure function library, so the client
+  and the server compute the same spread cone.
+- **AI.** StateTree behaviors with perception, awareness and suspicion, squads
+  that share stimuli, patrols and tactical positioning. A significance system
+  lowers decision rate, replication rate and network activity with distance. An
+  AI director steers one hunting creature by sending it to areas of interest
+  rather than to the player's exact position.
+- **Dismemberment.** Any bone can be severed at runtime without pre-cut meshes.
+  The server replicates only which parts are gone. Clients collapse the limb at
+  the cut and can generate a capped mesh piece off the game thread, cached per
+  mesh so identical creatures reuse the result.
+- **Quests and dialogue.** Definitions are shared assets, and a player's
+  progress is a small replicated record. Dialogue replicates node indices and a
+  bitmask of available choices, never text, and the server checks each choice
+  before applying it.
+- **Crafting.** Recipes are built from requirement, cost and output fragments.
+  Queue progress is based on timestamps rather than per-tick replication, and
+  carries over saves, reloads and offline time.
 
 ## Networking
 
-Server-authoritative: clients request, the server decides and mutates, and
-changes flow back through `FFastArraySerializer` lists that fire add/change
-callbacks. Nothing polls, so the UI is event-driven.
+- **Push-model replication** on every replicated property, with FastArray
+  serialization for collections.
+- **Data split by audience.** Equipment sends the full item record to its owner
+  and only the slot and item ID to other players. Container contents go only to
+  the player who opened the container. A player's GAS montages and cues travel
+  on the pawn instead of the always-relevant PlayerState, so distant players do
+  not receive them.
+- **Iris support** with prioritizer tiers per actor type, distance bands that
+  match the AI significance bands, and tests that check the configuration
+  against the code.
+- **Lag compensation** for hitscan shots and melee sweeps, using a fixed-size
+  history buffer per actor. Timestamps ahead of the server are rejected and old
+  timestamps are clamped.
+- **RPC rate limiting** per connection and per request category, resolved in
+  constant time, with throttled feedback to the client.
+- **Online services** behind an abstract backend, with the EOS implementation in
+  its own module and credentials kept in each project's configuration.
 
-A lag-compensation subsystem keeps a rewind history of hitboxes, so ranged
-validation happens against what the shooting client actually saw. GAS handles
-(applied-effect, granted-ability, anim-layer tag) stay server-only and are
-re-derived in `BeginPlay`, so reconnects and respawns recover the right state
-with no extra RPC. The structures are also Iris-compatible.
+## Persistence
+
+The save module has no knowledge of gameplay modules. A system becomes saveable
+by implementing a Foundation interface or by marking properties with `SaveGame`.
+
+- **Two granularities.** Whole-world slot saves for single-player, with Oodle
+  compression, checksums, backups, version migration and World Partition
+  support. Per-record saves for online play, where each player or entity is
+  written on its own.
+- **Concurrency.** Record writes carry a revision and are rejected on conflict
+  instead of overwriting newer data. Entity leases stop two servers from owning
+  the same character. Writes to the same record are queued and merged.
+- **Asynchronous API.** Every record operation has an asynchronous form, so a
+  database or cloud backend never blocks a server frame.
+- **Item ledger.** An append-only journal records every server-side item
+  movement with its source, destination and reason, and detects gaps in its own
+  sequence.
+
+## Performance and testing
+
+A single `MGF_PERF_SCOPE` line reports to Unreal Insights, the engine's stat
+counters and the framework's own accumulator. Memory pools and per-connection
+bandwidth are recorded through the same system, and `mgf.perf.baseline` writes
+the timing, memory and bandwidth figures to a document that budgets are written
+from.
+
+One measurement changed a design decision. A 36-creature test session showed
+StateTree decisions taking 95% of the framework's frame time. The engine reset
+the tick interval set by the significance system after every tick, so every
+agent was deciding every frame. The component now reapplies its interval after
+the engine's own update.
+
+Tests are automation specs. World-backed specs create a real `UWorld` and game
+instance, so components and subsystems run their normal lifecycle. Key specs
+are checked by mutation: the code under test is deliberately broken to confirm
+the test fails.
+
+## Editor tooling
+
+- An editor mode that groups the framework's live pages (cheats, saves,
+  profiler, memory, stats, combat, AI significance, AI director, UI) under five
+  categories: Session, Performance, Character, World and Presentation.
+- Quest and dialogue graph editors. The dialogue editor previews shots with the
+  runtime camera solver and embeds a Sequencer timeline per node.
+- 43 asset factories, component visualizers for patrol routes and interaction
+  points, and 14 Gameplay Debugger categories that collect on the server.
+- A content audit that reports asset types with no content, and content the
+  Asset Manager cannot find.
 
 ## Source tree
 
@@ -155,10 +231,9 @@ with no extra RPC. The structures are also Iris-compatible.
 
 ## Roadmap
 
-Next modules, pushing MGF toward a full RPG foundation:
-
-- **Quest system.** Objectives, state tracking, and branching, same data-driven
-  tag-based approach as the rest.
-- **Dynamic movement & locomotion.** Responsive traversal combat can build on.
-
-The aim is an in-house framework a studio reuses across its RPGs.
+- **Server topology.** A world router for instance lifetime, capacity and
+  handoff between server processes.
+- **Genre systems.** Progression, threat tables, groups, economy and social
+  features.
+- **Networked testing.** Automated tests on a live listen-server session, run
+  on every framework commit.

@@ -27,7 +27,7 @@ export function CountUp({
 
   return (
     <span ref={ref}>
-      {display}
+      {display.toLocaleString("en-US")}
       {suffix}
     </span>
   );

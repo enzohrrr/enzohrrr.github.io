@@ -159,7 +159,7 @@ export const siteConfig = {
       title: "Game Programmer",
       org: "Legion: We Are Many",
       detail:
-        "Building the Mirage Game Framework (MGF), a modular server-authoritative gameplay framework for UE5, plus indie games that showcase its scalability.",
+        "Building the Mirage Game Framework (MGF), a 26-module server-authoritative gameplay framework for Unreal Engine 5, and the games built on it.",
     },
     {
       period: "2023 – 2024",
@@ -204,14 +204,17 @@ export const siteConfig = {
     "Gameplay Tags",
     "Server-Authoritative",
     "FastArray",
+    "Iris",
+    "StateTree",
+    "Epic Online Services",
   ],
 
   /** Headline numbers, shown as animated count-up stats on the home page. */
   stats: [
-    { value: 11, suffix: "", label: "Framework modules" },
-    { value: 10, suffix: "", label: "Gameplay systems" },
+    { value: 26, suffix: "", label: "Framework modules" },
+    { value: 1073, suffix: "", label: "Automation tests" },
     { value: 100, suffix: "%", label: "Server-authoritative" },
-    { value: 5, suffix: ".7", label: "Unreal Engine" },
+    { value: 5, suffix: ".8", label: "Unreal Engine" },
   ],
 
   /** Favorite games, shown as a key-visual grid on the About page (in order). */
